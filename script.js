@@ -1,8 +1,8 @@
 // URLs seguras da OnSign TV (Adicionando o controle de repetição nativo)
-const URL_LIGAR_DELEN = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv?repeat=0'; 
+const URL_LIGAR_DELEN = 'https://app.onsign.tv/play/bwhATdI8bPAI6008P1x7WPBd'; 
 
 // URL para parar imediatamente qualquer campanha sob demanda ativa no player
-const URL_DESLIGAR_DELEN = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv?stop=true'; 
+const URL_DESLIGAR_DELEN = 'https://app.onsign.tv/play/bwhATdI8bPAI6008P1x7WPBd'; 
 
 const button = document.getElementById('toggleBtn');
 const statusText = document.getElementById('status');
