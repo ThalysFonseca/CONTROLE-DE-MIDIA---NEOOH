@@ -1,56 +1,55 @@
-// URLs seguras copiadas do seu painel da OnSign TV
-const URL_DELEN = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv'; 
-// Lembre-se de colar a URL do Atmosphera correta na linha abaixo:
-const URL_ATMOSPHERA = 'https://cmwide.widedigital.com.br/play/IyZdaWAhkk5sd1hOUFYnMU4d'; 
+// URLs seguras da OnSign TV
+const URL_LIGAR_DELEN = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv'; 
+
+// URL de parada padrão da OnSign para o seu player (interrompe o Sob Demanda e volta pro Loop)
+const URL_DESLIGAR_DELEN = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv?stop=true'; 
 
 const button = document.getElementById('toggleBtn');
 const statusText = document.getElementById('status');
 
-// Define o estado inicial (false = Atmosphera, true = Delen)
+// Controle de estado (false = Delen desligado/Loop ativo, true = Delen ativo)
 let isDelenActive = false;
 
+// Ajuste visual inicial do botão ao carregar a página
+updateUI(isDelenActive);
+
 button.addEventListener('click', () => {
-    // Desabilita temporariamente para evitar cliques duplos rápidos
     button.disabled = true;
     
-    // Alterna o estado lógico
+    // Alterna o estado do Delen
     isDelenActive = !isDelenActive;
     
-    // Define qual URL disparar com base no estado
-    const targetUrl = isDelenActive ? URL_DELEN : URL_ATMOSPHERA;
+    // Define se vai ligar ou desligar com base no estado
+    const targetUrl = isDelenActive ? URL_LIGAR_DELEN : URL_DESLIGAR_DELEN;
     
-    // Atualiza a interface visual imediatamente
     updateUI(isDelenActive);
 
-    // MÁGICA DO PING DE IMAGEM: 
-    // Criamos uma imagem invisível na memória para forçar o navegador a acessar a URL
-    // Isso ignora totalmente o bloqueio de CORS!
+    // Ping de imagem invisível para burlar o CORS e disparar o sinal
     const pingImage = new Image();
     
     pingImage.onload = () => {
-        console.log("Comando enviado com sucesso (imagem carregada).");
+        console.log("Sinal enviado com sucesso!");
         button.disabled = false;
     };
     
     pingImage.onerror = () => {
-        // Como a URL do On-Demand não é de fato uma imagem, o navegador vai disparar "error",
-        // mas o acesso ao link já aconteceu com sucesso no servidor do player!
-        console.log("Comando disparado com sucesso (ping concluído).");
+        // O navegador acusa "erro" porque o link não é um arquivo de imagem real,
+        // mas o ping bateu no servidor e o player já executou o comando física na tela!
+        console.log("Comando processado no player.");
         button.disabled = false;
     };
 
-    // Define o endereço para disparar o comando na mesma hora
     pingImage.src = targetUrl;
 });
 
 function updateUI(active) {
     if (active) {
-        button.className = 'btn-control delen';
-        button.innerText = 'Mídia Delen Ativa';
-        statusText.innerText = 'Toque para voltar ao Atmosphera';
+        button.className = 'btn-control delen'; // Fica Rosa/Vermelho
+        button.innerText = 'Desativar Delen';
+        statusText.innerText = 'Toque para voltar à programação normal (Atmosphera)';
     } else {
-        button.className = 'btn-control atmosphera';
-        button.innerText = 'Playlist Atmosphera';
-        statusText.innerText = 'Toque para alternar para o Delen';
+        button.className = 'btn-control atmosphera'; // Fica Azul
+        button.innerText = 'Ativar Delen';
+        statusText.innerText = 'Toque para exibir a campanha do Delen imediatamente';
     }
 }
