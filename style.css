@@ -1,0 +1,46 @@
+body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        h2 {
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        .btn-control {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        /* Estado inicial: Atmosphera Ativo */
+        .atmosphera {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+        /* Estado alternado: Delen Ativo */
+        .delen {
+            background: linear-gradient(135deg, #f857a6, #ff5858);
+        }
+        .status-text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
