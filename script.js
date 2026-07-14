@@ -1,8 +1,10 @@
-// URLs seguras da OnSign TV (Adicionando o controle de repetição nativo)
-const URL_LIGAR_DELEN = 'https://app.onsign.tv/play/bwhATdI8bPAI6008P1x7WPBd'; 
+// ATENÇÃO: Substitua os IDs abaixo pelos correspondentes do seu painel
+// 1. Pegue o link On-Demand completo do Delen que você usou anteriormente:
+const LINK_DELEN_BASE = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv';
 
-// URL para parar imediatamente qualquer campanha sob demanda ativa no player
-const URL_DESLIGAR_DELEN = 'https://app.onsign.tv/play/bwhATdI8bPAI6008P1x7WPBd'; 
+// Criamos as duas URLs de comando direto para o seu Player
+const URL_LIGAR_DELEN = `${LINK_DELEN_BASE}?repeat=true`; // Força o loop nativo do player
+const URL_DESLIGAR_DELEN = `${LINK_DELEN_BASE}?stop=true`;  // Força a parada imediata e limpa a memória do player
 
 const button = document.getElementById('toggleBtn');
 const statusText = document.getElementById('status');
@@ -15,25 +17,25 @@ updateUI(isDelenActive);
 button.addEventListener('click', () => {
     button.disabled = true;
     
-    // Alterna o estado do Delen
+    // Alterna o estado lógico
     isDelenActive = !isDelenActive;
     
-    // Define qual URL disparar com base no estado
+    // Define qual comando de sistema enviar
     const targetUrl = isDelenActive ? URL_LIGAR_DELEN : URL_DESLIGAR_DELEN;
     
     updateUI(isDelenActive);
 
-    // Ping de imagem invisível para burlar o CORS
+    // Método de Ping de Imagem para evitar bloqueios de CORS do navegador
     const pingImage = new Image();
     
     pingImage.onload = () => {
-        console.log("Sinal enviado com sucesso!");
+        console.log("Comando recebido pelo player.");
         button.disabled = false;
     };
     
     pingImage.onerror = () => {
-        // Ignora o erro de renderização de imagem e libera o botão
-        console.log("Comando enviado.");
+        // Ignora erro de formato de imagem no navegador
+        console.log("Comando enviado com sucesso.");
         button.disabled = false;
     };
 
@@ -42,7 +44,7 @@ button.addEventListener('click', () => {
 
 function updateUI(active) {
     if (active) {
-        button.className = 'btn-control delen'; // Fica Rosa/Vermelho
+        button.className = 'btn-control delen'; // Fica Vermelho/Rosa
         button.innerText = 'Desativar Delen';
         statusText.innerText = 'Toque para voltar à programação normal (Atmosphera)';
     } else {
