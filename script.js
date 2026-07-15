@@ -5,13 +5,13 @@
 //    oficiais "repeat" (número de repetições, 0 = infinito) e "action=queue".
 //    IMPORTANTE: NÃO existe parâmetro "stop=true" no link de play — o OnSign TV
 //    simplesmente ignora parâmetros desconhecidos, por isso o Delen nunca parava.
-const URL_LIGAR_DELEN = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv?repeat=0';
+const URL_LIGAR_DELEN = 'https://app.onsign.tv/play/bwhATdI8bPAI6008P1x7WPBd?repeat=0';
 
 // 2) Link de STOP: é uma URL DIFERENTE, gerada separadamente no painel.
 //    Como obter: Player > "Content in Player" > seção "Triggered Content" >
 //    clique na setinha ao lado do botão azul "Stop On Demand Playback" >
 //    "Share Stop URL" > copie o link e cole abaixo.
-const URL_DESLIGAR_DELEN = 'https://cmwide.widedigital.com.br/stop/JQVV2kP1FegXM9BeEya6ecqB';
+const URL_DESLIGAR_DELEN = 'https://app.onsign.tv/stop/Ou0HMqDvcjVqChfnUjbx7mWR';
 
 const button = document.getElementById('toggleBtn');
 const statusText = document.getElementById('status');
