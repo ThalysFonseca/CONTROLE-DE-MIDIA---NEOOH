@@ -1,10 +1,7 @@
-// ATENÇÃO: Substitua os links abaixo pelos correspondentes do seu painel OnSign TV
-//
+
 // 1) Link de PLAY do conteúdo Delen (obtido no ícone de "corrente/link" dentro de
 //    "Triggered Content" no painel do Player). Ele aceita apenas os parâmetros
 //    oficiais "repeat" (número de repetições, 0 = infinito) e "action=queue".
-//    IMPORTANTE: NÃO existe parâmetro "stop=true" no link de play — o OnSign TV
-//    simplesmente ignora parâmetros desconhecidos, por isso o Delen nunca parava.
 const URL_LIGAR_DELEN = 'https://app.onsign.tv/play/bwhATdI8bPAI6008P1x7WPBd?repeat=0';
 
 // 2) Link de STOP: é uma URL DIFERENTE, gerada separadamente no painel.
