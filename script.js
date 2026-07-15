@@ -1,10 +1,17 @@
-// ATENÇÃO: Substitua os IDs abaixo pelos correspondentes do seu painel
-// 1. Pegue o link On-Demand completo do Delen que você usou anteriormente:
-const LINK_DELEN_BASE = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv';
+// ATENÇÃO: Substitua os links abaixo pelos correspondentes do seu painel OnSign TV
+//
+// 1) Link de PLAY do conteúdo Delen (obtido no ícone de "corrente/link" dentro de
+//    "Triggered Content" no painel do Player). Ele aceita apenas os parâmetros
+//    oficiais "repeat" (número de repetições, 0 = infinito) e "action=queue".
+//    IMPORTANTE: NÃO existe parâmetro "stop=true" no link de play — o OnSign TV
+//    simplesmente ignora parâmetros desconhecidos, por isso o Delen nunca parava.
+const URL_LIGAR_DELEN = 'https://cmwide.widedigital.com.br/play/kWqGyO0Iap2AY6Ayf6jTegUv?repeat=0';
 
-// Criamos as duas URLs de comando direto para o seu Player
-const URL_LIGAR_DELEN = `${LINK_DELEN_BASE}?repeat=true`; // Força o loop nativo do player
-const URL_DESLIGAR_DELEN = `${LINK_DELEN_BASE}?stop=true`;  // Força a parada imediata e limpa a memória do player
+// 2) Link de STOP: é uma URL DIFERENTE, gerada separadamente no painel.
+//    Como obter: Player > "Content in Player" > seção "Triggered Content" >
+//    clique na setinha ao lado do botão azul "Stop On Demand Playback" >
+//    "Share Stop URL" > copie o link e cole abaixo.
+const URL_DESLIGAR_DELEN = 'https://cmwide.widedigital.com.br/stop/JQVV2kP1FegXM9BeEya6ecqB';
 
 const button = document.getElementById('toggleBtn');
 const statusText = document.getElementById('status');
