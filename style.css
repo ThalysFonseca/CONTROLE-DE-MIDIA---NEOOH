@@ -33,7 +33,7 @@ body {
     font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: 3px;
-    color: #00e5ff;
+    color: #6C137E; /* Cor da Logo alterada para Roxo */
     margin-bottom: 10px;
 }
 
@@ -65,18 +65,18 @@ p {
 }
 
 .btn-control.atmosphera {
-    background-color: #00e5ff;
-    color: #000000;
-    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+    background-color: #6C137E; /* Cor de fundo alterada para Roxo */
+    color: #ffffff; /* Texto branco para contraste */
+    box-shadow: 0 4px 15px rgba(108, 19, 126, 0.4); /* Sombra roxa suave */
 }
 
 .btn-control.atmosphera:hover {
-    background-color: #33ebff;
+    background-color: #8A22A1; /* Roxo um pouco mais claro no hover */
     transform: translateY(-2px);
 }
 
 .btn-control.delen {
-    background-color: #ff3b30;
+    background-color: #ff3b30; /* Mantido o vermelho para ação de emergência/parada */
     color: #ffffff;
     box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
 }
@@ -96,6 +96,7 @@ p {
 .user-info {
     border-bottom: 1px solid #2a2a3a;
     padding-bottom: 15px;
+    width: 100%;
 }
 
 #logoutBtn {
