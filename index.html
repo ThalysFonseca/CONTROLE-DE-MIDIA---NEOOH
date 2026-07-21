@@ -3,15 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
     <title>Controle de Mídia - NEOOH</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- SDK Oficial do Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-    <div class="container">
-        <h2 id="title">Controle do Player</h2>
-        <button id="toggleBtn" class="btn-control atmosphera">Playlist Atmosphera</button>
-        <p id="status" class="status-text">Toque para alternar para o Delen</p>
+
+    <!-- TELA DE LOGIN (Oculta o painel de controle por padrão) -->
+    <div id="loginScreen" class="container">
+        <div class="logo">NEOOH</div>
+        <h2>Área Restrita</h2>
+        <p>Identifique-se com sua conta Google autorizada para acessar o controle.</p>
+        
+        <!-- Botão renderizado pelo Google -->
+        <div id="googleBtnContainer" style="display: flex; justify-content: center; margin-top: 20px;"></div>
+        
+        <p id="loginError" style="color: #ff4a4a; margin-top: 15px; display: none; font-weight: bold;"></p>
     </div>
+
+    <!-- TELA DO CONTROLE (Liberada só após login válido) -->
+    <div id="controlScreen" class="container" style="display: none;">
+        <div class="user-info" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px; font-size: 0.85rem; color: #aaa;">
+            <span id="userEmail"></span>
+            <button id="logoutBtn" onclick="logout()" style="background: #222; color: #fff; border: 1px solid #444; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Sair</button>
+        </div>
+
+        <div class="logo">NEOOH</div>
+        <h2>Controle do Player</h2>
+        <p id="status">Verificando estado do player...</p>
+
+        <button id="toggleBtn" class="btn-control atmosphera" disabled>Ativar Delen</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
